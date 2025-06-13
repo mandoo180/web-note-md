@@ -1,0 +1,13 @@
+blinker==1.9.0
+click==8.2.1
+Flask==3.1.1
+itsdangerous==2.2.0
+Jinja2==3.1.6
+Markdown==3.8
+markdown-it-py==3.0.0
+MarkupSafe==3.0.2
+mdit-py-plugins==0.4.2
+mdurl==0.1.2
+Pygments==2.19.1
+setuptools==80.9.0
+Werkzeug==3.1.3
