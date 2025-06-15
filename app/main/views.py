@@ -18,16 +18,11 @@ md = MarkdownIt("commonmark", {
 
 @main.route('/')
 def index():
-    return render_template('index.html')
-
-
-@main.route('/list')
-def file_list():
     md_files = list(Path(f"{os.environ['WEB_NOTE_HOME']}").glob("*.md"))
-    return render_template('list.html', md_files=md_files)
+    return render_template('index.html', md_files=md_files)
 
 
-@main.route('/view/<filename>')
+@main.route('/<filename>')
 def view(filename):
     md_file = f"{os.environ['WEB_NOTE_HOME']}/{filename}"
     with open(md_file, "r", encoding="utf-8") as f:

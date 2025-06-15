@@ -7,8 +7,27 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="test" name="description" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+	<style>
+      body {
+		  background-color: #000;
+		  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+		  padding: 2rem;
+      }
+
+      .markdown-body {
+		  box-sizing: border-box;
+		  min-width: 200px;
+		  max-width: 980px;
+		  margin: 0 auto;
+		  padding: 2rem;
+		  border: 1px solid #d0d7de;
+		  border-radius: 6px;
+      }
+	</style>
 </head>
 <body>
-  {% block content %}{% endblock %}
+  <article class="markdown-body">
+	{% block content %}{% endblock %}
+  </article>
 </body>
 </html>

@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-  <a href="/list">List</a>
-</div>
+<ul class="list">
+  {% for f in md_files %}
+  <li><a href="/{{f.name}}">{{f.name}}</a></li>
+  {% endfor %}
+</ul>
 {% endblock %}
