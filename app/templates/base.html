@@ -10,6 +10,7 @@
 	<style>
       body {
 		  background-color: #000;
+		  color: #fff;
 		  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 		  padding: 2rem;
       }
@@ -36,6 +37,15 @@
 	</style>
 </head>
 <body>
+  {% if get_flashed_messages() %}
+  <div id="message-background">
+    <div id="message-box">
+	  {% for message in get_flashed_messages() %}
+	  <h4 class="message">{{ message }}</h4>
+	  {% endfor %}
+	</div>
+  </div>
+  {% endif %}
   <article class="markdown-body">
 	{% block content %}{% endblock %}
   </article>
