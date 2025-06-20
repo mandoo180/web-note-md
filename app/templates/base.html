@@ -47,6 +47,7 @@
 	</div>
   </div>
   {% endif %}
+  <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="width: 100px; height: auto; display: block; margin: 0 auto 1rem; border-radius: 50%;">
   <article class="markdown-body">
 	{% block content %}{% endblock %}
   </article>
