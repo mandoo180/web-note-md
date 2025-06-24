@@ -3,6 +3,7 @@ import re
 import requests
 import json
 
+from datetime import datetime
 from pathlib import Path
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import UserMixin, AnonymousUserMixin, login_user, logout_user, login_required, current_user
@@ -43,6 +44,20 @@ def login():
         if r.status_code == 200:
             try:
                 login_user(User(r.json()['token']))
+                # FIXME: 분리할 것
+                userid = current_user.get_id()
+                agent = request.headers.get("User-Agent", "")
+                remote_addr = request.headers.get("X-Forwarded-For", request.remote_addr)
+                log_str = f"{datetime.now().isoformat()}::AUTH::{remote_addr}::{agent}::{userid}"
+                headers = {'Content-Type': 'application/json'}
+                data = {
+                    "text": log_str,
+                    "username": "flask-app",
+                    "icon_emoji": ":flask:"
+                }
+                slack_webhook = os.environ.get('SLACK_WEBHOOK_URL')
+                if slack_webhook:
+                    r = requests.post(slack_webhook, headers=headers, data=json.dumps(data))
             except ValueError:
                 pass
             return redirect(url_for('main.index'))
