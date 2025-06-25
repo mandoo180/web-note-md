@@ -48,16 +48,14 @@ def login():
                 userid = current_user.get_id()
                 agent = request.headers.get("User-Agent", "")
                 remote_addr = request.headers.get("X-Forwarded-For", request.remote_addr)
-                log_str = f"{datetime.now().isoformat()}::AUTH::{remote_addr}::{agent}::{userid}"
                 headers = {'Content-Type': 'application/json'}
                 data = {
-                    "text": log_str,
-                    "username": "flask-app",
-                    "icon_emoji": ":flask:"
+                    "text": f"{datetime.now().isoformat()}::AUTH::{remote_addr}::{agent}::{userid}",
+                    "chat_id": os.environ.get('TELEGRAM_CHAT_ID'),
                 }
-                slack_webhook = os.environ.get('SLACK_WEBHOOK_URL')
-                if slack_webhook:
-                    r = requests.post(slack_webhook, headers=headers, data=json.dumps(data))
+                boturl = os.environ.get('TELEGRAM_BOT_URL')
+                if boturl:
+                    r = requests.post(boturl, headers=headers, data=json.dumps(data))
             except ValueError:
                 pass
             return redirect(url_for('main.index'))
