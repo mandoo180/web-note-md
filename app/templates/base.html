@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Note</title>
-    <meta charset="UTF-8">
-    <meta name="robots" content="index.follow" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Mostly technical notes" name="description" />
-	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+  <title>Note</title>
+  <meta charset="UTF-8">
+  <meta name="robots" content="index.follow" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Mostly technical notes" name="description" />
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
 	<style>
-      body {
-		  background-color: #000;
-		  color: #fff;
-		  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-		  padding: 2rem;
-      }
+  body {
+    background-color: #000;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    padding: 2rem;
+  }
 
-      .markdown-body {
-		  box-sizing: border-box;
-		  min-width: 200px;
-		  max-width: 980px;
-		  margin: 0 auto;
-		  padding: 2rem;
-		  border: 1px solid #d0d7de;
-		  border-radius: 6px;
-      }
-	  
-	  @media (max-width: 600px) {
-		  body {
-			  padding: 0rem;
-		  }
-		  .markdown-body {
-			  padding: 1rem;
-			  border-width: 0.5px;
-		  }
-	  }
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2rem;
+    border: 1px solid #d0d7de;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 600px) {
+    body {
+      padding: 0rem;
+    }
+    .markdown-body {
+      padding: 1rem;
+      border-width: 0.5px;
+    }
+  }
 	</style>
 </head>
 <body>
@@ -47,7 +47,9 @@
 	</div>
   </div>
   {% endif %}
-  <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="width: 100px; height: auto; display: block; margin: 0 auto 1rem; border-radius: 50%;">
+  <a href="{{ url_for('main.index')}}">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="width: 100px; height: auto; display: block; margin: 0 auto 1rem; border-radius: 50%;">
+  </a>
   <article class="markdown-body">
 	{% block content %}{% endblock %}
   </article>
