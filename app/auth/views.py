@@ -40,7 +40,7 @@ def login():
         password = request.form['password']
         headers = {'Content-Type': 'application/json'}
         payload = json.dumps(dict(username=username, password=password))
-        r = requests.post('http://localhost:8085/api/v1/auth/login', headers=headers, data=payload)
+        r = requests.post('https://anonpengling.org/api/v1/auth/login', headers=headers, data=payload)
         if r.status_code == 200:
             try:
                 login_user(User(r.json()['token']))

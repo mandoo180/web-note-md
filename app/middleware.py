@@ -27,7 +27,7 @@ def jwt_auth_middleware(app):
             return None
         if current_user.is_authenticated:
             headers = { 'Authorization': f'Bearer {current_user.id}' }
-            r = requests.get('http://localhost:8085/api/v1/auth/verify', headers=headers)
+            r = requests.get('https://anonpengling.org/api/v1/auth/verify', headers=headers)
             if r.status_code == 200:
                 return None
             return redirect(url_for('auth.logout'))
