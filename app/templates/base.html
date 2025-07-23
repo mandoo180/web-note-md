@@ -22,6 +22,19 @@
       height: 10rem;
     }
 
+    .logo-box {
+      height: 6rem;
+      margin: auto;
+      width: 6rem;
+    }
+
+    .logo {
+      border-radius: 50%;
+      display: block;
+      height: auto;
+      width: 100%;
+    }
+
     .markdown-body {
       box-sizing: border-box;
       min-width: 200px;
@@ -56,10 +69,11 @@
   </div>
   {% endif %}
   <nav class="header">
-    <a href="{{ url_for('main.index')}}">
-      <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo"
-        style="width: 100px; height: auto; display: block; margin: 0 auto 1rem; border-radius: 50%;">
-    </a>
+    <div class="logo-box">
+      <a href="{{ url_for('main.index')}}">
+        <img class="logo" src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+      </a>
+    </div>
   </nav>
   <article class="markdown-body">
     {% block content %}{% endblock %}
